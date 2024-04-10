@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boom Recorder</title>
+    <link rel="stylesheet" href="./src/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Onest:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div
+      class="absolute inset-0 -z-10 h-full w-full items-center px-5 py-24 [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#e11d4826_100%)]"
+    ></div>
+
+    <div
+      id="timerContainer"
+      class="absolute w-full h-full bg-gradient-to-t from-neutral-900 to-rose-600 flex justify-center items-center animate-blurred-fade-in hidden"
+    >
+      <span
+        id="countdownTimer"
+        class="relative z-10 text-8xl text-center font-semibold onest"
+        >Starting in 3</span
+      >
+    </div>
+    <h1 class="text-center text-3xl pt-5 onest">Introducing Boom ;)</h1>
+
+    <section class="flex justify-around mt-10">
+      <section
+        id="recorderControls"
+        class="flex flex-col justify-center align-center rounded-full border-2 border-zinc-800 shadow-xl bg-zinc-800 w-16 animate-blurred-fade-in h-64 absolute left-0 ms-6 top-1/3 transform -translate-y-1/3 hidden"
+      >
+        <buton id="stopRecording" class="w-6 m-auto cursor-pointer">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z"
+                fill="#ffffff"
+              ></path>
+            </g>
+          </svg>
+        </buton>
+        <span id="counter" class="text-center">0:00</span>
+        <buton id="pauseRecording" class="w-6 m-auto cursor-pointer hidden">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M2 6C2 4.11438 2 3.17157 2.58579 2.58579C3.17157 2 4.11438 2 6 2C7.88562 2 8.82843 2 9.41421 2.58579C10 3.17157 10 4.11438 10 6V18C10 19.8856 10 20.8284 9.41421 21.4142C8.82843 22 7.88562 22 6 22C4.11438 22 3.17157 22 2.58579 21.4142C2 20.8284 2 19.8856 2 18V6Z"
+                fill="#ffffff"
+              ></path>
+              <path
+                d="M14 6C14 4.11438 14 3.17157 14.5858 2.58579C15.1716 2 16.1144 2 18 2C19.8856 2 20.8284 2 21.4142 2.58579C22 3.17157 22 4.11438 22 6V18C22 19.8856 22 20.8284 21.4142 21.4142C20.8284 22 19.8856 22 18 22C16.1144 22 15.1716 22 14.5858 21.4142C14 20.8284 14 19.8856 14 18V6Z"
+                fill="#ffffff"
+              ></path>
+            </g>
+          </svg>
+        </buton>
+        <buton id="resumeRecording" class="w-6 m-auto cursor-pointer">
+          <svg
+            viewBox="0 0 24 24"
+            fill="#ffffff"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z"
+                fill="#ffffff"
+              ></path>
+            </g>
+          </svg>
+        </buton>
+        <buton id="replayRecording" class="w-6 m-auto cursor-pointer">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M5 13C5 16.866 8.13401 20 12 20C15.866 20 19 16.866 19 13C19 9.13401 15.866 6 12 6H7M7 6L10 3M7 6L10 9"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </buton>
+        <buton id="deleteRecording" class="w-6 m-auto cursor-pointer">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+            <g
+              id="SVGRepo_tracerCarrier"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            ></g>
+            <g id="SVGRepo_iconCarrier">
+              <path
+                d="M18 6L17.1991 18.0129C17.129 19.065 17.0939 19.5911 16.8667 19.99C16.6666 20.3412 16.3648 20.6235 16.0011 20.7998C15.588 21 15.0607 21 14.0062 21H9.99377C8.93927 21 8.41202 21 7.99889 20.7998C7.63517 20.6235 7.33339 20.3412 7.13332 19.99C6.90607 19.5911 6.871 19.065 6.80086 18.0129L6 6M4 6H20M16 6L15.7294 5.18807C15.4671 4.40125 15.3359 4.00784 15.0927 3.71698C14.8779 3.46013 14.6021 3.26132 14.2905 3.13878C13.9376 3 13.523 3 12.6936 3H11.3064C10.477 3 10.0624 3 9.70951 3.13878C9.39792 3.26132 9.12208 3.46013 8.90729 3.71698C8.66405 4.00784 8.53292 4.40125 8.27064 5.18807L8 6M14 10V17M10 10V17"
+                stroke="#ffffff"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              ></path>
+            </g>
+          </svg>
+        </buton>
+      </section>
+      <div>
+        <form
+          id="recorderBox"
+          class="flex gap-5 flex-col align-center justify-center p-4 rounded-2xl shadow-inner shadow-xl bg-zinc-800 animate-blurred-fade-in"
+        >
+          <select class="p-2 rounded-2xl" name="screen" id="screenSelect">
+            <option value="fullscreen">Full Screen</option>
+          </select>
+          <select class="p-2 rounded-2xl" name="camera" id="camera">
+            <option value="camera">Integrated Camera</option>
+          </select>
+          <select class="p-2 rounded-2xl" name="microphone" id="microphone">
+            <!-- <option value="disabled">disabled</option> -->
+            <option value="microphone">Microphone</option>
+          </select>
+          <button
+            id="startRecording"
+            class="bg-rose-600 rounded-full py-2 font-semibold"
+          >
+            Start recording
+          </button>
+        </form>
+      </div>
+    </section>
+    <script src="./src/utils.js"></script>
+  </body>
+</html>
